@@ -1,0 +1,91 @@
+// uses https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css
+// uses https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
+
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+.loading {
+  position:absolute;
+  font-size:6vw;
+  top:50%;
+  left:50%;
+  -webkit-transform:translateX(-50%);
+          transform:translateX(-50%);
+}
+
+body {
+  background:#1D1F20;
+  padding:20px;
+  font-family:roboto, sans-serif;
+}
+
+.title p {
+  color: white;
+  font-family:serif;
+  font-size:80px;
+  margin-bottom:0px;
+  letter-spacing:1.5px;
+}
+
+.title small {
+  font-family:lobster;
+  font-size:150%;
+}
+
+.wrap {
+  margin:0 auto;
+}
+
+.card {
+  position: relative;
+  width:250px;
+  background:white;
+  border-radius:2px;
+  overflow:hidden;
+  padding:0px;
+  -webkit-transition: -webkit-transform 0.1s linear;
+          transition:-webkit-transform 0.1s linear;
+          transition:transform 0.1s linear;
+          transition: transform 0.1s linear, -webkit-transform 0.1s linear;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  float:left;
+  margin:15px;
+  text-decoration:none;
+}
+.card:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+
+.card img {
+  width:100%;
+  height:200px;
+}
+
+.card main {
+  padding:15px 20px 15px 20px;
+}
+
+.card footer {
+  height: 30px;
+  border-top: 1px lightgrey solid;
+}
+
+.card footer p {
+ text-align:center;
+ padding-top:10px;
+}
+
+.upV {
+  padding-left:20px;
+  padding-right:2px;
+}
+
+.comments {
+  padding-right:2px;
+}
+.date {
+  padding-right:20px;
+}

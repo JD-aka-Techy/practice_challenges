@@ -1,0 +1,38 @@
+.wrap(ng-app="TwitchApp")
+  ul.tabs(ng-init="tab = 1")
+    li(ng-class="{active:tab===1}")
+      a(href="" ng-click="tab = 1" class='active')
+        | All
+    li(ng-class="{active: tab === 2}")
+      a(href="" ng-click="tab = 2")
+        | Online
+    li(ng-class="{active: tab === 3}")
+      a(href="" ng-click="tab = 3")
+        | Offline
+
+  .search-wrap
+    input.search(ng-model="search" placeholder="Search")
+    label.search-label(for=".search") Search
+
+  .details(ng-controller="MainController as main")
+
+    ul(ng-show="tab === 1")
+      li(ng-repeat="channel in main.channels | filter:search")
+        a(href="{{channel.url}}" target="_blank")
+          | <img src="{{channel.logo || 'http://placehold.it/30x30' }}">
+          p {{channel.call}}
+          p {{channel.status === "online" ? channel.streaming : ""}}
+
+    ul(ng-show="tab === 2")
+      li(ng-repeat="channel in main.channels | filter:{'status':'online'} | filter:search")
+        a(href="{{channel.url}}" target="_blank")
+          | <img src="{{channel.logo || 'http://placehold.it/40x40' }}">
+          p {{channel.call}}
+          p {{channel.status === "online" ? channel.streaming : ""}}
+
+    ul(ng-show="tab === 3")
+      li(ng-repeat="channel in main.channels | filter:{'status':'offline'} | filter:search")
+        a(href="{{channel.url}}" target="_blank")
+          | <img src="{{channel.logo || 'http://placehold.it/30x30' }}">
+          p {{channel.call}}
+          p {{channel.status === "online" ? channel.streaming : ""}}

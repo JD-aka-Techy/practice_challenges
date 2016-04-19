@@ -1,0 +1,85 @@
+
+.game
+  position: relative
+  width: 40vw
+  min-width: 290px
+  height: 40vw
+  min-height: 290px
+  margin: 0 auto
+
+.button
+  box-sizing: border-box
+  width: 48%
+  height: 48%
+  float: left
+  margin: 1%
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+
+.green
+  background: #00c256
+  border-top-left-radius: 100%
+.green-shine
+  background: #00a84b
+.red
+  background: red
+  border-top-right-radius: 100%
+.red-shine
+  background: #ff6666
+.blue
+  background: blue
+  border-bottom-right-radius: 100%
+.blue-shine
+  background: #7f7fef
+.yellow
+  background: yellow
+  border-bottom-left-radius: 100%
+.yellow-shine
+  background: #cccc22
+
+.locked
+  pointer-events: none
+
+.controls
+  position: absolute
+  background: white
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  height: 150px
+  width: 150px
+  text-align: center
+
+  .title
+    box-sizing: border-box
+    height: 30px
+    padding: 5px
+
+#round
+  box-sizing: border-box
+  padding: 5px
+  height: 30px
+  &:before
+    content: 'Round'
+    padding: 2px
+
+.strict-butt
+  padding: 5px
+  color: white
+  height: 30px
+  background: blue
+  content: 'Strict mode OFF'
+
+.strict-on
+  background: red
+  content: 'Strict mode ON'
+
+
+.reset
+  box-sizing: border-box
+  padding: 5px
+  height: 30px
+  background: orange
+  margin: 0 auto
+  &:before
+    content: 'Reset'

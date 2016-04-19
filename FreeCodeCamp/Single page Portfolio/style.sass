@@ -1,0 +1,346 @@
+@import compass/reset
+@import compass
+@import susy
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700)
+
+/*Global styles*/
+$background-col: #fafaff
+$highlight-col: #F4C838
+$font-col: rgba(0,0,0,0.7)
+$main-font: 'Lato', sans-serif
+$header-pic: url('https://unsplash.it/300/300')
+
+/* Media query breakpoints */
+$small-break: 620px
+$medium-break: 920px
+$large-break: 1300px
+
+/* Helpers */
+
+/* CSS tricks centerer takes bool for horizontal, vertical - defaults to true */
+@mixin center($horizontal: true, $vertical: true)
+  position: absolute
+  @if ($horizontal and $vertical)
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)
+  @else if ($horizontal)
+    left: 50%
+    transform: translate(-50%, 0)
+  @else if ($vertical)
+    top: 50%
+    transform: translate(0, -50%)
+
+
+.page-wrap
+  max-width: 1500px
+  padding-top: 48px
+  margin: 0 auto
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+  font-family: $main-font
+  color: $font-col
+
+
+/* Navigation */
+.nav-wrap
+  max-width: 1500px
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+  position: fixed
+  top: 0px
+  z-index: 100
+  background: #fafaff
+  width: 100%
+  font-family: 'Lato', sans-serif
+
+  .nav-switch
+    position: absolute
+    display: none
+  .nav-switch-label
+    /*HIDDEN IN DESKTOP MODE*/
+    position: absolute
+    display: none
+
+  .nav-title
+    display: none
+    float: left
+    padding: 1em 0.87em
+    color: rgba(0,0,0,0.7)
+    font-weight: 700
+    @include susy-breakpoint($medium-break)
+      display: block
+    &:hover
+      color: $highlight-col
+      text-shadow: 1px 1px 2px $font-col
+
+  nav
+    overflow: hidden
+    visibility: visible
+
+    ul
+      float: right
+      padding-right: 2%
+    ul li
+      float: left
+      border-right: lightgrey 2px solid
+      font-family: 'Lato', sans-serif
+      pointer-events: auto
+      padding: 1em 0.87em
+      &:hover, :focus
+        background: #F4C838
+
+      &:last-of-type
+        border-right: none
+      a
+        text-decoration: none
+        font-weight: 700
+        color: rgba(0,0,0,0.7)
+
+
+
+
+  .nav-switch:checked ~ nav
+    visibility: visible
+
+/* Main Hero */
+/* Creates star field TODO: circular field to spin */
+@function create_stars($num)
+  $stars: '1714px 387px #FFF'
+  @for $x from 0 to $num
+    $stars: '#{$stars} , #{random(2000)}px #{random(2000)}px #FFF'
+
+  @return unquote($stars)
+
+$small-stars: 1200
+$big-stars: 400
+$hero-gradient: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%)
+
+.hero
+  /* TODO: add fallback height, animations */
+  position: relative
+  height: 60vh
+  overflow: hidden
+  background: #090A0F $hero-gradient
+  .big-stars
+    content: ''
+    height: 1px
+    width: 1px
+    box-shadow: create_stars($small-stars)
+    animation: move-stars 600s linear infinite
+  .small-stars
+    content: ''
+    height: 2px
+    width: 2px
+    box-shadow: create_stars($big-stars)
+    animation: move-stars 350s linear infinite
+
+  span
+
+    @include center
+    font-weight: 700
+    font-size: 2.6em
+    text-align: center
+    h1
+      color: white
+    h2
+      color: $highlight-col
+      font-size: 80%
+
+/* Star animation */
+@keyframes move-stars
+  from
+    transform: translateY(0px) translateX(0px)
+  to
+    transform: translateY(-2000px) translateX(-2000px)
+
+/* Quotes section */
+.quotes
+  position: relative
+  text-align: center
+  height: calc( 40vh - 48px )
+  width: 100%
+  padding-top: 5%
+  &:after
+    display: none
+    @include susy-breakpoint($medium-break)
+      display: block
+      content: ''
+      background-image: url('https://unsplash.it/300/300')
+      background-size: cover
+      position: absolute
+      width: 300px
+      height: 300px
+      border: #FAFAFF 5px solid
+      border-radius: 50%
+      top: -100px
+      left: 50%
+      transform: translateX(-50%)
+      z-index: 10
+
+
+  blockquote
+    color: rgba(0,0,0,0.7)
+    font-family: sans-serif
+    font-style: italic
+    font-size: 1.5em
+    &:before
+      content: "\201C"
+    cite
+      display: block
+      padding: 10px
+      font-size: 80%
+      &:before
+        content: "— "
+      &:after
+        content: " —"
+        font-size: inherit
+
+.fold-left
+  position: relative
+  box-sizing: border-box
+  @include susy-breakpoint($medium-break)
+    width: 33%
+    float: left
+    padding-left: 5%
+
+.fold-right
+  position: relative
+  box-sizing: border-box
+  @include susy-breakpoint($medium-break)
+    width: 33%
+    float: right
+    padding-right: 5%
+
+/* q-spacer allows folds to flow around absolutely positioned image */
+.q-spacer
+  /* mobile view requires no spacer */
+  display: none
+  @include susy-breakpoint($medium-break)
+    display: inline-block
+    margin: 0 auto
+    width: 300px
+    height: 20px
+
+
+
+/* About me section */
+#about
+  font-size: 2em
+  @include susy-breakpoint(920px)
+    font-size: 2.5em
+
+.heyiam
+  width: 80%
+  max-width: 650px
+  min-width: 300px
+  margin: 0 auto
+  text-align: center
+  padding-bottom: 60px
+
+.skills-wrap
+  width: 80%
+  max-width: 750px
+  min-width: 300px
+  margin: 0 auto
+  font-size: 90%
+  p
+    text-align: center
+    margin: 0 auto
+    padding: 30px 0px 30px 0px
+    text-decoration: underline
+
+.skills
+  margin: 0 auto
+  ul
+    text-align: center
+    li
+      padding: 20px
+      display: inline-block
+
+/* Work section */
+#work
+  padding-bottom: 25%
+  @include container(95%)
+  header
+    text-align: center
+    padding-bottom: 60px
+    text-decoration: underline
+    font-size: 2em
+    @include susy-breakpoint(920px)
+      font-size: 2.5em
+
+/* Project thumbs */
+.projects
+  width: 80%
+  margin: 0 auto
+  @include clearfix()
+
+.project
+  position: relative
+  width: 100%
+  height: auto
+  font-size: 2em
+  font-weight: 700
+
+
+
+  /* gallery breakpoints */
+  @include susy-breakpoint($small-break)
+    @include gallery(6 of 12)
+
+  @include susy-breakpoint($medium-break)
+    @include gallery(4 of 12)
+
+  @include susy-breakpoint($large-break)
+    @include gutters(1/2)
+
+  img
+    height: auto
+    width: 100%
+  h2
+    position: absolute
+    top: 70%
+    left: 0
+    width: 100%
+    font-size: 80%
+    span
+      color: white
+      letter-spacing: -1px
+      background: rgba(0, 0, 0, 0.7)
+      padding: 10px
+
+
+#contact
+  position: relative
+  background: #1D1F20
+
+  &:after
+    -webkit-box-reflect: below 0.1em -webkit-linear-gradient(transparent, rgba(255,255,255,0.1) 70%, rgba(255,255,255,0.2))
+    color: #1D1F20
+    position: absolute
+    top: -56px
+    left: 50%
+    transform: translateX(-50%)
+    font-size: 4em
+    font-weight: 700
+    content: 'Contact'
+    z-index: 1
+
+  ol
+    width: 100%
+    text-align: center
+    li
+      font-size: 2em
+      padding: 0.5em
+
+  a, a:visited
+    color: white
+    text-decoration: none
+  a:hover
+    color: $highlight-col
+    text-decoration: underline
+
+
+/* overall article style */
+article
+  box-sizing: border-box
+  padding: 70px 0px 60px 0px

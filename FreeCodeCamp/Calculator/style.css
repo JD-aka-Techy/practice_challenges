@@ -1,0 +1,170 @@
+@import url(http://fonts.googleapis.com/css?family=Reenie+Beanie);
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+/* RESET CODE */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+body {
+  width: 100vw;
+  min-width:1230px;
+  height: 100vh;
+  background: -webkit-linear-gradient(0deg, rgba(0,0,0,0) 79px, rgb(171,206,212) 79px, rgb(171,206,212) 81px, rgba(0,0,0,0) 81px), -webkit-linear-gradient(90deg, rgb(238,238,238) 0.1em, rgba(0,0,0,0) 0.1em), rgb(255, 255, 255);
+  background: linear-gradient(90deg, rgba(0,0,0,0) 79px, rgb(171,206,212) 79px, rgb(171,206,212) 81px, rgba(0,0,0,0) 81px), linear-gradient(0deg, rgb(238,238,238) 0.1em, rgba(0,0,0,0) 0.1em), rgb(255, 255, 255);
+  background-size: 100% 1.2em;
+}
+
+.calc {
+  position:fixed;
+  height: 400px;
+  width: 300px;
+  margin: 40px;
+  color: white;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.60), 0 15px 12px rgba(0,0,0,0.55);
+  top:15%;
+}
+
+.output {
+  box-sizing: border-box;
+  width: 300px;
+  height: 80px;
+  border: 20px solid #1DE9B6;
+  background: #1DE9B6;
+  font-size: 40px;
+  overflow: hidden;
+  text-align:right;
+  border-radius:10px 10px 0px 0px;
+}
+
+.keys {
+  width:100%;
+  height:85%;
+  background: #4C4C4C;
+  font-size: 30px;
+  border-radius:10px;
+}
+
+.column {
+  width:75px;
+  height:100%;
+  float:left;
+  background: #4C4C4C;
+  border-radius:0px 0px 10px 10px;
+}
+
+.point:hover {
+   border-radius:0px 0px 0px 10px;
+}
+
+.key {
+  height:68px;
+  width:75px;
+  text-align:center;
+  font-family: 'Roboto', sans-serif;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-transition: background-color 0.1s linear;
+          transition: background-color 0.1s linear;
+}
+
+.key:hover {
+  cursor: pointer;
+  background: #636363;
+}
+
+.key span {
+  position:relative;
+  top:25%;
+}
+
+.operator {
+  background: #636363;
+}
+
+.operator:hover {
+  background: #4C4C4C;
+}
+
+.plus {
+  height:136px;
+  border-radius:0px 0px 10px 0px;
+}
+
+.plus span {
+  position:relative;
+  top:40%;
+}
+
+.answers {
+  position:relative;
+  text-align:center;
+  width:60%;
+  left:28%;
+}
+
+.records, .math{
+  width: 800px;
+  height: 80%;
+  font-family: Reenie Beanie;
+  color: #2e2ec9;
+  padding-left: 70px;
+  letter-spacing: 2px;
+  font-size: 40px;
+  overflow: hidden;
+}
+
+.records {
+  text-align:left;
+}
+
+.math {
+  width:100%;
+  padding: 20px;
+}

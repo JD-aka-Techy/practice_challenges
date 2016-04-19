@@ -1,0 +1,52 @@
+// uses //maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
+
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+body {
+  background: #363F45;
+  color: #727272;
+}
+
+.wrap {
+  height: 100vh;
+  width: 40vw;
+  margin: 0 auto;
+  background: #FFF;
+  border-right: 1px #B6B6B6 solid;
+  border-left: 1px #B6B6B6 solid;
+  padding: 0px;
+  font-size: 2vw;
+}
+
+.content-wrap {
+  position: absolute;
+  width: 40vw;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+  text-align: center;
+  font-family: Roboto;
+  padding: 0px;
+}
+
+.timer {
+  background: #0288D1;
+  -webkit-transition: background 0.2s ease;
+          transition: background 0.2s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  padding: 40px 0px 40px 0px;
+  font-size: 4vw;
+  color: #212121;
+}
+.timer:hover {
+  background: #279edd;
+}
+
+.uptime, downTime {
+  padding: 20px;
+}
+
+.pointer {
+  cursor: pointer;
+}

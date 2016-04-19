@@ -1,0 +1,97 @@
+// uses Autoprefixer
+// uses https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
+// uses //maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css
+
+@reset "compass/reset"
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400)
+
+@import url(http://fonts.googleapis.com/css?family=Lobster)
+
+.title
+  p
+    color: white
+    font-family: serif
+    font-size: 80px
+    letter-spacing: 1.5px
+  small
+    font-family: lobster
+    font-size: 150%
+
+body
+  background: #1D1F20
+  font-family: roboto, sans-serif
+
+.wrap
+  width: 100%
+  max-width: 1400px
+  padding: 20px
+  margin: 0 auto
+
+.columns
+  margin: 0 auto
+  -webkit-column-count: 5
+  -moz-column-count: 5
+  column-count: 5
+  div
+    padding-top: 50px
+    display: inline-block
+
+.card
+  position: relative
+  width: 250px
+  background: white
+  border-radius: 2px
+  overflow: hidden
+  margin: 0px
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23)
+  text-decoration: none
+  &:hover
+    transform: translateY(-5px)
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22)
+  img
+    width: 100%
+    height: 200px
+  main
+    padding: 15px 20px 15px 20px
+  footer
+    border-top: 1px lightgrey solid
+    p
+      text-align: center
+      padding-top: 10px
+      padding-left: 20px
+
+.comments
+  float: left
+  padding-right: 5px
+
+.thumb
+  padding-left: 10px
+
+.date
+  float: right
+  padding-right: 20px
+
+@media (max-width: 1450px)
+  .columns
+    -webkit-column-count: 4
+    -moz-column-count: 4
+    column-count: 4
+
+@media (max-width: 1200px)
+  .columns
+    -webkit-column-count: 3
+    -moz-column-count: 3
+    column-count: 3
+
+@media (max-width: 900px)
+  .columns
+    -webkit-column-count: 2
+    -moz-column-count: 2
+    column-count: 2
+
+@media (max-width: 580px)
+  .columns
+    -webkit-column-count: 1
+    -moz-column-count: 1
+    column-count: 1

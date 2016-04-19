@@ -1,0 +1,26 @@
+html
+  h1.text-center.title
+    p Free Code Camp
+    small Coder news
+    
+  body.wrap(ng-app='TestApp')
+    div(ng-controller='MainController as main')
+      .columns
+        div(ng-repeat='story in main.first')
+          a.post(target='_blank', href='{{story.link}}')
+            article.card
+              img(ng-src='{{story.image || story.author.picture}}', alt='article picture')
+              main
+                p
+                  i.fa.fa-user
+                  |  {{story.author.username}}
+                | {{story.headline}}
+              footer
+                p.comments
+                  a(target='_blank', href="{{'http://www.freecodecamp.com/news/' + story.storyLink}}")
+                    i.fa.fa-comments.comments
+                    | discuss
+                  i.fa.fa-thumbs-up.thumb(alt='UpVotes')
+                  | {{story.upVotes.length}}
+                p.date(alt='date')
+                  | {{story.timePosted | date}}

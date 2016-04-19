@@ -1,0 +1,131 @@
+// uses https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css
+// uses autoprefixer
+
+@import compass/reset
+
+$size: 110px
+$padding: 50px
+$x-icon:  "\f00d"
+$o-icon:  "\f10c"
+$player-color: #01A5CF
+$computer-color: rgba(255,255,255,0.9)
+
+body
+  background: #343338
+  color: rgba(255,255,255,0.8)
+
+.board
+  width: (($size * 3) + $padding)
+  height: (($size * 3) + $padding)
+  position: relative
+  margin: 0 auto
+  text-align: center
+  margin-top: 50px
+
+// input radio button
+.board input
+  display: none
+// cell label
+.cell
+  position: relative
+  display: inline-block
+  height: $size
+  width: $size
+  box-sizing: border-box
+  cursor: pointer
+  background-color: rgba(0, 0, 0, 0.15)
+  margin: 5px
+  &:hover
+    background-color: rgba(0, 0, 0, 0.4)
+
+// Settings menu
+.settings
+  margin: 10px auto
+  width: 250px
+  z-index: 3
+  display: none
+  border: 1px solid white
+  border-radius: 2px
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+
+.change-player
+  margin: 0 auto
+  width: 200px
+  padding: 10px
+  border: 1px solid white
+  border-radius: 2px
+  cursor: pointer
+  z-index: 3
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  &:hover
+    color: white
+    border-colour: white
+    transform: translateY(-1px)
+
+.new-game-button
+  margin: 20px auto
+  padding: 10px
+  font-size: 2em
+  width: 200px
+  border: 1px solid white
+  border-radius: 2px
+  cursor: pointer
+  text-align: center
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  &:hover
+    color: white
+    border-colour: white
+    transform: translateY(-1px)
+
+// nought icons
+.nought:before, .cross:before
+  font-family: 'FontAwesome'
+  position: absolute
+  bottom: 0
+  left: 0
+  right: 0
+  font-size: 5em
+  top: 15px
+
+.nought:before
+  content: $o-icon
+
+.cross:before
+  content: $x-icon
+
+.menu
+  @extend .board
+  position: absolute
+  margin: auto
+  right: 0
+  left: 0
+  z-index: 2
+  text-align: center
+  background: rgba(52,51,56,0.90)
+  display: flex
+  flex-direction: column
+  justify-content: center
+
+.choice
+  display: inline-block
+  height: $size
+  width: $size
+  box-sizing: border-box
+  position: relative
+  cursor: pointer
+  padding-top: 6px
+  font-family: 'FontAwesome'
+  font-size: 1em
+  &:hover
+    transform: translateY(-1px)
+  &:before
+    color: rgba(255,255,255,0.8)
+
+.computer-color
+  color: $computer-color
+
+.player-color
+  color: $player-color
+
+.unhide
+  display: block
