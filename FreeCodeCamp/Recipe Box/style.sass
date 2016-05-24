@@ -1,0 +1,135 @@
+// uses auoprefixer
+
+@import compass/reset
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700)
+
+
+body
+  background: #DCE1E5
+  padding-bottom: 3rem
+  font-family: 'Lato', sans-serif
+
+
+#appContainer
+  position: relative
+  padding: 2rem 0
+  box-sizing: border-box
+  color: rgba(black, 0.9)
+
+.cardHead
+  font-weight: 700
+  color: rgba(white, 0.8)
+  box-sizing: border-box
+  position: relative
+  height: 350px
+  background: url('https://www.dropbox.com/s/gt2af4yjgssbu76/cook.jpg?dl=1')
+  background-size: cover
+  &:before
+    position: absolute
+    width: 100%
+    height: 100%
+    background: linear-gradient( to top, rgba(#c69cf4, 1) 10%, rgba(#c69cf4,0.6) 40% )
+    content: ''
+  &:after
+    position: absolute
+    bottom: -50px
+    left: 0
+    width: 100%
+    height: 30%
+    background: white
+    transform: skewY(-5deg)
+    content: ''
+  h1
+    width: 100%
+    padding: 1em
+    box-sizing: border-box
+    position: absolute
+    text-align: center
+    top: 40%
+    transform: translateY(-50%)
+    font-size: 3.5em
+  button
+    cursor: pointer
+    z-index: 1
+    position: absolute
+    bottom: 40px
+    right: 45px
+    font-size: 1.5em
+    color: white
+    width: 60px
+    height: 60px
+    border: none
+    border-radius: 50%
+    background: #EA355E
+    transition: height 0.1s linear, width 0.1s linear, right 0.1s linear, bottom 0.1s linear
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23)
+    outline: none
+    &:hover
+      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22)
+      right: 40px
+      bottom: 40px
+      height: 70px
+      width: 70px
+
+
+.recipeBook
+  border-radius: 2px
+  margin: 0 auto
+  width: 500px
+  background: white
+  overflow: hidden
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  padding-bottom: 2rem
+  ul
+    font-size: 1.5em
+    font-weight: 400
+    min-height: 200px
+    position: relative
+    padding: 0 2rem
+    li:not(:last-of-type)
+      border-bottom: 1px solid rgba(black, 0.1)
+
+
+
+.recipeName
+  padding: 0.5rem 0.5rem
+  vertical-align: text-bottom
+  span:first-of-type
+    font-size: 0.8em
+    color: rgba(black, 0.3)
+    vertical-align: middle
+  span:last-of-type
+    float: right
+    color: rgba(black, 0.5)
+    &:hover
+      cursor: pointer
+      text-decoration: underline
+      color: rgba(black, 0.8)
+
+
+.recipeDetails
+  padding: 0.5rem 3rem
+  span
+    padding: 0.5em
+    display: block
+    text-align: center
+    color: rgba(black, 0.5)
+    &:hover
+      cursor: pointer
+      text-decoration: underline
+      color: rgba(black, 0.8)
+  textarea
+    font-family: 'Lato', sans-serif
+    display: block
+    padding: 0.3em
+    width: 100%
+    max-width: 100%
+    border: none
+    background: rgba(186, 145, 221, 0.18)
+    font-size: 1em
+    &:last-of-type
+      min-height: 100px
+
+.collapse
+  height: 0px
+  overflow: hidden

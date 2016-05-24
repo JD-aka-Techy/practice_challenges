@@ -1,0 +1,31 @@
+// uses autoprefixer
+
+ul
+  margin: 0 auto
+  text-align: center
+  padding: 20px
+  li
+    display: block
+
+.board
+  position: relative
+  user-select: none
+  text-align: center
+  overflow: hidden
+  min-width: 440px
+
+.row
+  line-height: 0
+  white-space: no-wrap
+.dead
+  background: rgba(grey, 0.2)
+.alive
+  background: green
+
+.dead, .alive
+  display: inline-block
+  transition: background 0.2s linear
+  border: 1px solid rgba(black, 0.2)
+  width: 20px
+  height: 20px
+  content: ""

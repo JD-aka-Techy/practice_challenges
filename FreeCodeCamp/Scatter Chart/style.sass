@@ -1,0 +1,54 @@
+@import compass/reset
+
+body
+  font-family: sans-serif
+  font-size: 70%
+  padding: 2em
+  background: #FFE
+  min-width: 900px
+
+.chart-wrap
+  background: #FFF
+  position: relative
+  margin: 0 auto
+  border: 1px solid rgba(black, 0.3)
+  padding: 1em
+  line-height: 2em
+  max-width: 900px
+  .titles
+    padding-left: 30px
+  h1
+    font-size: 2em
+  h2
+    font-size: 1.5em
+[class*='axis'] path
+  fill: none
+  stroke: black
+  stroke-width: 1px
+  shape-rendering: crispEdges
+
+.plot-point
+  transition: r 0.1s linear
+  &:hover
+    r: 8px
+
+#info
+  position: absolute
+  width: 300px
+  height: 150px
+  margin: 0 auto
+  text-align: center
+  font-size: 1em
+
+.attrib
+  max-width: 900px
+  margin: 0 auto
+  padding-top: 20px
+  list-style-type: circle
+  list-style-position: inside
+  li
+    padding: 2px 0
+  a
+    color: rgba(black, 0.8)
+    &:hover
+      color: blue
