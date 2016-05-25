@@ -1,0 +1,131 @@
+const dataUrl = 'https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/global-temperature.json';
+
+const MARGINS = { top: 20, right: 30, bottom: 100, left: 50 },
+      SVG_X = 1200, // main svg canvas width
+      SVG_Y = 550, // main svg canvas height
+      CHART_HEIGHT = SVG_Y - MARGINS.top - MARGINS.bottom, // inner group canvas width
+      CHART_WIDTH = SVG_X - MARGINS.left - MARGINS.right, // inner group canvas height
+      MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+      COLORS = ["#5e4fa2", "#3288bd", "#66c2a5", "#abdda4", "#e6f598", "#ffffbf", "#fee08b", "#fdae61", "#f46d43", "#d53e4f", "#9e0142"];
+
+d3.json(dataUrl, (response) => {
+
+  // parse data points
+  const BASE_TEMP = response.baseTemperature,
+        data = response.monthlyVariance.map( (d) => {
+                      const temp = BASE_TEMP + d.variance;
+                      return { ...d, temp };
+                 });
+  //console.log(data)
+
+  // define scales and axis  
+  const scaleY = d3.scale.ordinal() // ordinal scale for constant set number of inputs
+                   .domain( d3.range(1,13) )
+                   .rangeRoundBands([0, CHART_HEIGHT]);
+
+  const axisY = d3.svg.axis().scale(scaleY).orient('left').tickFormat(d => MONTHS[d - 1].slice(0,3));
+
+  const scaleX = d3.scale.linear()
+                   .domain( d3.extent(data, d => d.year)  )
+                   .rangeRound( [0, CHART_WIDTH] ),
+
+        axisX = d3.svg.axis().scale( scaleX ).tickFormat( d3.format(".0f") );
+  
+  const scaleColor = d3.scale.quantile()
+    .domain( d3.extent( data, d => d.variance ) )
+    .range(COLORS);
+
+
+
+  // Assemble main svg window with inner padding
+  const chart = d3.select(".chart-wrap")
+    .append("svg")
+    .attr({
+      'height': SVG_Y,
+      'width': SVG_X
+    })
+    .append('g') // pad sides => chart now refers to inner group
+    .attr('transform', `translate( ${ MARGINS.left } , ${ MARGINS.top } )`);
+
+  // Add Y axis.
+  chart.append('g')
+       .attr('class', 'y-axis')
+       .call(axisY);
+  // Add X axis.
+  chart.append('g')
+       .attr('class', 'x-axis')
+       .call(axisX)
+       .attr('transform', `translate(0,${ CHART_HEIGHT } )`);
+  
+  const RECT_HEIGHT = CHART_HEIGHT / 12,
+        RECT_WIDTH = CHART_WIDTH / (data.length / 12);
+  
+  const rects = chart.selectAll('rect')
+                     .data( data )
+                     .enter()
+                     .append('rect')
+                     .attr({
+                       'height': RECT_HEIGHT,
+                       'width': RECT_WIDTH,
+                       'x': d => scaleX( d.year ),
+                       'y': d => scaleY( d.month ),
+                       'fill': d => scaleColor(d.variance),
+                       'fill-opacity': 0.9,
+                       'class': 'temp-rect',
+                       'stroke': 'black',
+                       'stroke-opacity': 0
+                     });
+  
+  
+  const key = chart.append('g')    
+    .attr('transform', `translate(${CHART_WIDTH - COLORS.length * 25}, ${CHART_HEIGHT + 50})`)
+  
+  
+  key.selectAll('rect')
+     .data(COLORS)
+     .enter()
+     .append('rect')
+     .attr({
+       'width': 25,
+       'height': 25,
+       'x': (d,i) => i * 25,
+       'fill': d => d
+     }).append('g')
+  
+  const step = d3.max(data, d => d.temp) / COLORS.length
+  const min = d3.min(data, d => d.temp)
+  key.selectAll('text')
+     .data(COLORS)
+     .enter()
+     .append('text')
+     .text( (d,i) => ((i * step) + min).toFixed(1) )
+     .attr({
+        'y': 40,
+        'x': (d,i) => i * 25 + 5,
+        'font-size': 12
+      });
+  
+  
+  // ToolTip handleing
+  const toolTip = d3.select('.toolTip');
+
+  rects.on('mouseover', (d) => {
+    const { pageX, pageY } = d3.event;
+    
+    toolTip.select('.date').text(`${MONTHS[d.month -1]} ${d.year}`)
+    toolTip.select('.temp').text( d.temp.toFixed(2) + '°C')
+    toolTip.select('.vari').text( d.variance.toFixed(2) + '°C')
+
+
+    toolTip.style({
+      'left': (pageX) + 'px',
+      'top': (pageY + 20) + 'px',
+      'opacity': 1
+    });
+  });
+
+  chart.on('mouseout', (d) => {
+    toolTip.style('opacity', 0);
+  });
+
+});
