@@ -1,0 +1,89 @@
+@import compass/reset
+
+$font-color: rgba(0,0,30,0.9)
+$font: serif
+$off-white: #fcfdff
+
+html, body
+  height: 100%
+  width: 100%
+
+body
+  box-sizing: border-box
+  color: $font-color
+  background: -webkit-radial-gradient(52% 94%, ellipse cover, #7F9CCF 43%, #8EA6D1 78%)
+
+.ui-widget-content
+  background: white
+  width: 40%
+  border: 1px solid black
+.ui-helper-hidden-accessible
+  display: none
+  li
+    list-style: none
+    &:hover
+      background: #7ca1d3
+
+.wrap
+  position: absolute
+  padding: 20px
+  top: 50%
+  left: 50%
+  transform: translate(-50%, -50%)
+  width: 90%
+  margin: 0 auto
+  max-height: 100%
+
+.search-box
+  padding: 30px
+  border-radius: 2px
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+  width: 80%
+  background: $off-white
+  text-align: center
+  margin: 5px auto
+
+  h1
+    font-size: 220%
+
+.search
+  text-align: center
+  width: 80%
+  height: 30px
+
+.submit
+  width: 60%
+  margin: 0 auto
+  padding: 10px
+  background: #4D6C98
+  cursor: pointer
+  margin: 5px auto
+  &:hover
+    background: #7ca1d3
+
+.found
+  padding: 10px
+  height: auto
+
+.item
+  background: $off-white
+  margin: 10px
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)
+
+  &:hover
+    border-left: 8px solid #4D6C98
+
+  header
+    background: #7ca1d3
+    padding: 10px
+    font-weight: 700
+
+  article
+    padding: 10px
+
+  a
+    text-decoration: none
+    color: $font-color
+    font-family: $font
+    display: block
+    
