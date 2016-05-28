@@ -39,14 +39,26 @@ d3.json(earthMap, geoJson => {
     "d": geoPath
   });
   
+  const zoom = d3.behavior.zoom()
+               .size([CHART_HEIGHT, CHART_WIDTH])
+               .scaleExtent([.4, 15])
+               .on('zoom', () => { map.attr({
+                                 'transform': 'translate(' +
+                                   d3.event.translate.join(',') +
+                                   ') scale(' +
+                                   d3.event.scale+
+                                   ')'
+                                  })
+               });
+  d3.select(".chart-wrap").call(zoom);
   
   // load meteoite strike data
   d3.json(dataUrl, data => {
     
     //scale for meteor mass
-    const massScale = d3.scale.linear()                        
-                        .domain(d3.extent(data.features, d => d.properties.mass ))
-                        .range([2,10])
+    const massScale = d3.scale.pow().exponent(0.5)                       
+                        .domain(d3.extent(data.features, d => d.properties.mass / Math.PI))
+                        .range([1,15])
     
     const meteors = map.append('g').selectAll( "path" )
        .data( data.features )
@@ -57,7 +69,7 @@ d3.json(earthMap, geoJson => {
           "fill": "#911", // set color of strike if you like
           "fill-opacity": 0.7,
           "stroke": "none",
-          "d": geoPath.pointRadius( d =>  massScale(Math.sqrt(d.properties.mass / Math.PI)) ) 
+          "d": geoPath.pointRadius( d =>  massScale(d.properties.mass) ) 
        });
     
     
